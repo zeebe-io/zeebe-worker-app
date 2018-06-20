@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "react/jsx-filename-extension": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/sort-comp": 0,
+    "react/prefer-stateless-function": 0,
+    "react/prop-types": 0,
+    "no-underscore-dangle": 0,
+    "no-debugger": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {
+        "root": ["./src"]
+      }
+    }
+  },
+  "globals": {
+    "document": true
+  }
+}
