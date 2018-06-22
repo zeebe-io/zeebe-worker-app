@@ -3,3 +3,4 @@ dist
 .vscode
 server/rest/node_modules
 server/rest/workerFiles/**
+utils
