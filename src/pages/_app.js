@@ -6,13 +6,12 @@ import createStores from 'utils/createStores';
 
 // Stores
 import BrowserStore from 'stores/BrowserStore';
-import UIStore from 'stores/UIStore';
 import WorkerStore from 'stores/WorkerStore';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/eclipse.css';
 
-const StoreClasses = [{ UIStore }, { BrowserStore }, { WorkerStore }];
+const StoreClasses = [{ BrowserStore }, { WorkerStore }];
 
 const http = {
   get: async (path) => {

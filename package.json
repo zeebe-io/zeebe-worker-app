@@ -12,8 +12,8 @@
     "build": "next build src",
     "start": "npm-run-all --parallel start:render start:rest",
     "zeebe-rm": "docker rm -f zeebe",
-    "zeebe-start": "docker run --name zeebe -e ZEEBE_HOST=0.0.0.0 -p 51015:51015 camunda/zeebe:latest",
-    "docker": "npm install && npm run build && npm start"
+    "zeebe-start":
+      "docker run --name zeebe -e ZEEBE_HOST=0.0.0.0 -p 51015:51015 camunda/zeebe:latest"
   },
   "keywords": [],
   "author": "",
