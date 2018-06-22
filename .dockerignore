@@ -1,0 +1,5 @@
+node_modules
+dist
+.vscode
+server/rest/node_modules
+server/rest/workerFiles/**
