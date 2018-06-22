@@ -2,8 +2,9 @@ import BaseStore from 'primitives/BaseStore';
 import { runInAction, action, ObservableMap } from 'mobx';
 import serialize from 'form-serialize';
 import Router from 'next/router';
-
 import io from 'socket.io-client';
+
+import env from 'env';
 
 class WorkerStore extends BaseStore {
   static defaultState = {
@@ -26,7 +27,7 @@ class WorkerStore extends BaseStore {
   handleAddSubmit = async (event) => {
     event.preventDefault();
     const data = serialize(event.currentTarget, { hash: true });
-    const worker = await this.http.post('http://127.0.0.1:4860/json/workers', data);
+    const worker = await this.http.post(`${env.restUrl}/workers`, data);
     runInAction('add worker', () => {
       this.state.workers.push(worker);
       this.closeAddDialog();
@@ -34,21 +35,21 @@ class WorkerStore extends BaseStore {
   };
 
   activateWorker = worker => async () => {
-    const response = await this.http.post('http://127.0.0.1:4860/json/activate-worker', worker);
+    const response = await this.http.post(`${env.restUrl}/activate-worker`, worker);
     runInAction('activate worker', () => {
       worker.childProcess = response.childProcess;
     });
   };
 
   deactivateWorker = worker => async () => {
-    const response = await this.http.post('http://127.0.0.1:4860/json/deactivate-worker', worker);
+    const response = await this.http.post(`${env.restUrl}/deactivate-worker`, worker);
     runInAction('deactivate worker', () => {
       worker.childProcess = response.childProcess;
     });
   };
 
   deleteWorker = async (worker) => {
-    await this.http.delete('http://127.0.0.1:4860/json/workers', worker);
+    await this.http.delete(`${env.restUrl}/workers`, worker);
   };
 
   remove = worker => async () => {
@@ -60,7 +61,7 @@ class WorkerStore extends BaseStore {
   };
 
   fetchCurrentWorker = async (id) => {
-    const worker = await this.http.get(`http://127.0.0.1:4860/json/workers/${id}`);
+    const worker = await this.http.get(`${env.restUrl}/workers/${id}`);
     runInAction(() => {
       this.state.currentWorker = worker;
     });
@@ -69,7 +70,7 @@ class WorkerStore extends BaseStore {
   updateCurrentWorker = async () => {
     const { currentWorker } = this.state;
     const id = currentWorker.workerFile;
-    await this.http.put(`http://127.0.0.1:4860/json/workers/${id}`, currentWorker);
+    await this.http.put(`${env.restUrl}/workers/${id}`, currentWorker);
     Router.back();
   };
 
@@ -79,7 +80,7 @@ class WorkerStore extends BaseStore {
 
     this.fetchWorkers();
     if (process.browser) {
-      this.io = io('http://127.0.0.1:4860');
+      this.io = io(`${env.restUrl}`);
       this.io.on('update-stats', (stats) => {
         runInAction('update stats', () => {
           const keys = Object.keys(stats);
@@ -93,7 +94,7 @@ class WorkerStore extends BaseStore {
   }
 
   fetchWorkers = async () => {
-    const workers = await this.http.get('http://127.0.0.1:4860/json/workers');
+    const workers = await this.http.get(`${env.restUrl}/workers`);
     runInAction('set workers', () => {
       this.state.workers = workers;
     });

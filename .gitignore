@@ -60,3 +60,5 @@ typings/
 dist
 
 .DS_Store
+
+server/rest/workerFiles

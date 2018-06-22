@@ -5,7 +5,6 @@ import {
   CardHeader,
   Typography,
   CardActions,
-  Divider,
   IconButton,
   Menu,
   MenuItem,
@@ -14,7 +13,7 @@ import { AddCircle, MoreVert } from '@material-ui/icons';
 import { observer, inject } from 'mobx-react';
 import { Component, Fragment } from 'react';
 import { observable, action } from 'mobx';
-import { Router } from '../../../server/routes';
+import { Router } from '../../../server/render/routes';
 
 import * as Styled from './styled';
 
