@@ -15,7 +15,15 @@ Create Node.JS Workers for your Zeebe Instances in a breeze.
 1.  Node.JS (tested with Node.JS 8 and above)
 2.  yarn (or npm)
 
-### Instructions for running this App:
+### Instructions for running this App (Using Docker or manually:
+
+#### Using Docker
+
+```sh
+$ docker run -p 4860:4860 -p 4861:4861 elgubenis/zeebe-worker-app:latest
+```
+
+#### Or manuallay by installing dependencies, building the app, running the app
 
 ```sh
 $ git clone https://github.com/componentDidMount/zeebe-worker-app.git
