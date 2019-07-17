@@ -1,5 +1,7 @@
 # Zeebe Worker App
 
+:warning: **This App does not work with newer Zeebe version and is no longer maintained.**
+
 Create Node.JS Workers for your Zeebe Instances in a breeze.
 
 ![List of Workers](https://photos-2.dropbox.com/t/2/AABSzpR6Id5j9NlYJu5AymniOQKbEPFfmCDPsffTh6qBJg/12/704448573/png/32x32/3/1529506800/0/2/Screenshot%202018-06-20%2012.19.34.png/EPXR8ecFGMgBIAcoBw/-F_c9_TTz-pjzWL7niV8-1dgp4B-Ca8ZDkurYClm1FA?dl=0&preserve_transparency=1&size=1280x960&size_mode=3)
